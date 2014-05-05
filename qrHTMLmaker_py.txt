@@ -1,0 +1,39 @@
+from __future__ import print_function
+
+html = """
+<style type="text/css">
+table {
+border-width: 0;
+border-style: none;
+border-color: #0000ff;
+border-collapse: collapse;
+}
+td {
+border-width: 0;
+border-style: none;
+border-color: #0000ff;
+border-collapse: collapse;
+padding: 0;
+margin: 0;
+width: 10px;
+height: 10px;
+}
+td.dark { background-color: #000; }
+td.light { background-color: #fff; }
+</style>
+
+<table>
+"""
+print(html)
+f = open("qr.txt", 'rb')
+for line in f.readlines():
+    print("<tr>")
+    for character in line:
+        if(character=='x'):
+            print('<td class="dark"/>')
+        else:
+            print('<td class="light"/>')
+    print("</tr>")
+print("</table>")
+
+

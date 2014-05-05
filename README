@@ -1,0 +1,22 @@
+QR codes are those things we see everywhere on ads that let mobile phone/camera users snap to take them to a URL. We want them for Facebase posters.
+This ruby code creates png formatted images of the QR codes. It also dumps text which can be used to create an HTML/CSS version of the QR code:
+
+qrHTMLandPNGmaker.rb
+
+That ruby doesn't actually dump HTML, only text with and 'x' character for dark and a "space" character for light. That text output can be used to create HTML/CSS that displays the QR code as an HTML table. This python program reads the output from the ruby program (the text output) and writes HTML/CSS to generate the QR code:
+
+qrHTMLmaker.py
+
+The ruby requires some modules that are probably not present. Install them with gem like this:
+
+gem install rqrcode
+gem install rqrcode_png
+
+NOTICE that the URLs are hardcoded into the ruby.
+NOTICE that the file qr.txt produced by the ruby is a hardcoded input filename in the python.
+The whole thing was run like this:
+
+ruby qrHTMLandPNGmaker.rb > rb.txt
+python qrHTMLmaker.py > qr_codes.html
+
+After running the ruby program, six new 300x300 PNG-formatted images will be created in the current directory. The output HTML from the python can be dropped right into any HTML file and will display the QR codes.
